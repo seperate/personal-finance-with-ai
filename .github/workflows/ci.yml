@@ -26,6 +26,13 @@ jobs:
         cd frontend
         npm ci
     
+    - name: Check frontend files
+      run: |
+        cd frontend
+        ls -la public/
+        ls -la src/
+        cat package.json | grep -A 5 "scripts"
+    
     - name: Run frontend linting
       run: |
         cd frontend
@@ -70,13 +77,12 @@ jobs:
         cd backend
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest pytest-asyncio pytest-cov flake8 black
     
     - name: Lint backend code
       run: |
         cd backend
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=venv
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --exclude=venv
     
     - name: Format check with black
       run: |

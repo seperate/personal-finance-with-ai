@@ -115,11 +115,11 @@ class BudgetBase(BaseModel):
     period: str
     start_date: datetime
     end_date: Optional[datetime] = None
-    alert_threshold: Optional[Decimal] = Decimal('0.80')
+    alert_threshold: Optional[Decimal] = Decimal("0.80")
 
-    @validator('period')
+    @validator("period")
     def validate_period(cls, v):
-        allowed_periods = ['daily', 'weekly', 'monthly', 'quarterly', 'yearly']
+        allowed_periods = ["daily", "weekly", "monthly", "quarterly", "yearly"]
         if v not in allowed_periods:
             raise ValueError(f'Period must be one of: {", ".join(allowed_periods)}')
         return v
@@ -248,6 +248,7 @@ class PDFProcessingStatus(BaseModel):
 
 class TransactionPreview(BaseModel):
     """For displaying transactions before user confirmation"""
+
     date: datetime
     description: str
     amount: Decimal
