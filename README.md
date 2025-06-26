@@ -46,7 +46,7 @@ personal-finance-with-ai/
 ## 🚦 Getting Started
 
 ### Prerequisites
-- Node.js (v18 or higher)
+- Node.js (v20 or higher)
 - Python 3.9+
 - Git
 
